@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "153625625203",
+    "firebase_url": "https://avogadrio-ecf8c.firebaseio.com",
+    "project_id": "avogadrio-ecf8c",
+    "storage_bucket": "avogadrio-ecf8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153625625203:android:2fbde5b704efe192",
+        "android_client_info": {
+          "package_name": "com.dotIO.avogadrio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "153625625203-of3jqdpnq8j8orel9d9u5002rhje9g07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIplYEpSki7HJlS2HvNpf5OoCDTInExPg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

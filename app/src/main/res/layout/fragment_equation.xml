@@ -1,0 +1,186 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+
+    tools:context=".EquationFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:layout_marginTop="0dp"
+        android:id="@+id/card2"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="5dp"
+                android:textSize="10dp"
+                android:text="Result"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:paddingBottom="16dp"
+                android:background="#e1e1e1"></View>
+
+            <com.dotIO.avogadrio.AutoResizeTextView android:id="@+id/eqnresult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:paddingLeft="5dp"
+                android:maxLines="4"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true" />
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card3"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/card2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView android:id="@+id/Stoichiometric_Calculator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text='Stoichiometric Calculator'
+                android:textSize="10dp"
+                />
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:paddingBottom="16dp"
+                android:background="#e1e1e1"
+                android:layout_below="@id/Stoichiometric_Calculator"/>
+
+
+            <EditText android:id="@+id/stoich_input"
+                android:layout_width="72sp"
+                android:layout_height="wrap_content"
+                android:hint="Input"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:layout_below="@id/line1"
+                />
+
+            <Spinner android:id="@+id/input_units"
+                android:layout_width="84sp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
+                android:layout_toRightOf="@+id/stoich_input"
+                android:layout_alignTop="@id/stoich_input"
+                android:layout_alignBottom="@id/stoich_input"
+                android:layout_toEndOf="@+id/stoich_input" />
+
+            <TextView
+                android:text="of"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/of1"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_toRightOf="@id/input_units"
+                android:layout_alignTop="@+id/input_units"
+                android:layout_toEndOf="@+id/input_units"
+                android:layout_alignBottom="@id/input_units"/>
+
+            <Spinner android:id="@+id/input_molecule"
+                android:layout_width="84sp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/of1"
+                android:layout_alignTop="@id/stoich_input"
+                android:layout_alignBottom="@id/stoich_input"
+                style="@style/Widget.AppCompat.Spinner.DropDown" />
+
+
+            <com.dotIO.avogadrio.AutoResizeTextView android:id="@+id/answer"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:text="Output"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:layout_below="@id/stoich_input"
+                android:layout_alignLeft="@id/stoich_input"
+                android:layout_alignRight="@id/stoich_input"
+                />
+
+
+            <Spinner android:id="@+id/out_units"
+                android:layout_width="84sp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/answer"
+                android:layout_alignTop="@id/answer"
+                android:layout_alignBottom="@id/answer"
+                style="@style/Widget.AppCompat.Spinner.DropDown" />
+
+            <TextView
+                android:text="of"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/of2"
+                android:textSize="18sp"
+                android:layout_alignTop="@+id/out_units"
+                android:layout_toRightOf="@+id/out_units"
+                android:layout_toEndOf="@+id/out_units" />
+
+            <Spinner android:id="@+id/output_molecule"
+                android:layout_width="84sp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/of2"
+                android:layout_alignTop="@id/of2"
+                android:layout_alignBottom="@id/of2"
+                style="@style/Widget.AppCompat.Spinner.DropDown" />
+
+            <Button  android:id="@+id/calculate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignTop="@id/stoich_input"
+                android:layout_alignBottom="@id/of2"
+                android:layout_toRightOf="@id/input_molecule"
+                android:background="@color/colorPrimary"
+                android:textColor="@android:color/white"
+                android:text="Enter"
+                android:layout_margin="3dp"
+                />
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:padding="10dp"
+    android:paddingBottom="10dp"
+    android:layout_margin="24dp"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="It is not necessary to complete all fields before submitting."
+            android:layout_alignParentTop="true"
+            android:id="@+id/edit_molecule_hint"/>
+
+        <Button
+            android:id="@+id/edit_molecule_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/colorPrimary"/>
+
+        <Button
+            android:id="@+id/dismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:layout_alignParentBottom="true"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_toLeftOf="@id/edit_molecule_submit"
+            android:textColor="@color/colorPrimary"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/edit_molecule_scrollview"
+            android:layout_below="@id/edit_molecule_hint"
+            android:layout_above="@id/dismiss"
+            >
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="0"
+                android:id="@+id/dialog_table"
+                >
+
+                <TableRow>
+                    <EditText
+                        android:id="@+id/edit_molecule_name"
+                        android:hint="Molecule Name"
+                        android:maxLines="1"
+                        android:inputType="text|textCapSentences"
+                        android:layout_column="0"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <EditText
+                        android:maxLines="1"
+                        android:id="@+id/edit_molecule_description"
+                        android:hint="Brief Description (50 char)"
+                        android:maxLength="50"
+                        android:inputType="text"
+                        android:layout_column="0"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <EditText
+                        android:id="@+id/edit_molecule_phase"
+                        android:hint="Phase at Room Temperature"
+                        android:layout_column="0"
+                        android:maxLines="1"
+                        android:inputType="text|textCapSentences"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <EditText
+                        android:id="@+id/edit_molecule_density"
+                        android:hint="Density (kg/m^3)"
+                        android:layout_column="0"
+                        android:inputType="number|numberDecimal"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <EditText
+                        android:id="@+id/edit_molecule_melting"
+                        android:hint="Melting Point (Celsius, 1 atm)"
+                        android:layout_column="0"
+                        android:inputType="number|numberDecimal|numberSigned"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <EditText
+                        android:id="@+id/edit_molecule_boiling"
+                        android:hint="Boiling Point (Celsius, 1 atm)"
+                        android:layout_column="0"
+                        android:inputType="number|numberDecimal|numberSigned"
+
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <EditText
+                        android:id="@+id/edit_molecule_specific_heat"
+                        android:hint="Specific Heat (J/gK)"
+                        android:layout_column="0"
+                        android:inputType="number|numberDecimal"
+
+                        />
+                </TableRow>
+
+                <TableRow>
+                <EditText
+                    android:id="@+id/edit_molecule_enthalpy"
+                    android:hint="Enthalpy of Formation (kJ/mol)"
+                    android:layout_column="0"
+                    android:inputType="number|numberDecimal|numberSigned"
+                    />
+            </TableRow>
+
+                <TableRow>
+                    <EditText
+                        android:id="@+id/edit_molecule_vaporization"
+                        android:hint="Enthalpy of Vaporization (kJ/mol)"
+                        android:layout_column="0"
+                        android:inputType="number|numberDecimal|numberSigned"
+                        />
+                </TableRow>
+
+                <TableRow>
+
+                    <EditText
+                        android:id="@+id/edit_molecule_pubchem"
+                        android:hint="PubChem ID"
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:layout_column="0"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <EditText
+                        android:id="@+id/edit_molecule_chemspider"
+                        android:hint="ChemSpider ID"
+                        android:layout_column="0"
+                        android:inputType="number"
+                        />
+                </TableRow>
+
+                <TableRow>
+
+                    <EditText
+                        android:id="@+id/edit_molecule_smiles"
+                        android:hint="SMILES notation"
+                        android:layout_column="0"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        />
+                </TableRow>
+
+
+
+            </TableLayout>
+        </ScrollView>
+
+
+    </RelativeLayout>
+</RelativeLayout>

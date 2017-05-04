@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Atomic: Chemistry Calculator</string>
+    <string name="banner_ad_unit_id">ca-app-pub-8633600346333564/6203038135</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="blank_fragment_message">Enter a Chemical Equation to balance it\nExample: C7H16 + O2 = H2O + CO2\n\nEnter an Element to learn more about it\nExample: Oxygen, Na, Aluminum\n\nEnter a Unit to convert it\nExample: 5g, 0.25 calories, 14 inches\n\nEnter a Molecule to find its molar mass\nExample: C7H16, 5g of CH3COOH\n\nEnter a Mathematical Expression to evaluate it\nExample: 5 - 7, (4+sqrt(pi * 8^2))/16</string>
+    <string name="equation_result"> </string>
+
+</resources>
