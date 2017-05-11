@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
     static{    AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
+//    FIREBASE
+FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference myRef = database.getReference("Searches");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         AppRater appRater = new AppRater(this);
         appRater.setDaysBeforePrompt(0);
         appRater.setLaunchesBeforePrompt(5);
-        appRater.setPhrases("Rate this app", "If you enjoy using Atomic, make sure to rate it!", "Rate now", "Later", "No, thanks");
+        appRater.setPhrases("Rate this app", "If you enjoy using Atom.io, make sure to rate it!", "Rate now", "Later", "No, thanks");
         appRater.show();
 
 //        GOOGLE ADMOBS
@@ -84,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 in = input.getText().toString();
+
+                Bundle event = new Bundle();
+                event.putString(FirebaseAnalytics.Param.SEARCH_TERM, in);
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SEARCH, event);
 
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);

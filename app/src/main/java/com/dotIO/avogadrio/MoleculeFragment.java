@@ -87,7 +87,7 @@ public class MoleculeFragment extends Fragment implements MoleculeDialogFragment
             element.setLayoutParams(params);
             tr.addView(element);
 
-            double molarMass = entry.getValue() * entry.getKey().getAtomicWeight();
+            double molarMass = entry.getKey().getAtomicWeight();
             TextView mass = new TextView(getActivity());
             mass.setText(df.format(molarMass) + " g/mol");
             mass.setGravity(Gravity.RIGHT);
