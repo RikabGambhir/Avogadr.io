@@ -90,8 +90,8 @@ FirebaseDatabase database = FirebaseDatabase.getInstance();
                 in = input.getText().toString();
 
                 Bundle event = new Bundle();
-                event.putString(FirebaseAnalytics.Param.SEARCH_TERM, in);
-                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SEARCH, event);
+                event.putString(FirebaseAnalytics.Param.ITEM_ID, in);
+                String log = "Blank";
 
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
@@ -109,6 +109,7 @@ FirebaseDatabase database = FirebaseDatabase.getInstance();
                     ft.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_out_right);;
                     ft.replace(R.id.fragment_container, fragment);
                     ft.commit();
+                    log = "Chemical Equation";
 
                 }
 
@@ -120,6 +121,7 @@ FirebaseDatabase database = FirebaseDatabase.getInstance();
                     Fragment fragment = newElementFragment(in);
                     ft.replace(R.id.fragment_container, fragment);
                     ft.commit();
+                    log = "Element";
                 }
 
                 else if (Amount.isAmount(in)){
@@ -129,6 +131,7 @@ FirebaseDatabase database = FirebaseDatabase.getInstance();
                     Fragment fragment = newAmountFragment(in);
                     ft.replace(R.id.fragment_container, fragment);
                     ft.commit();
+                    log = "Amount";
                 }
 
                 else if (Unit.isUnit(in)){
@@ -138,6 +141,7 @@ FirebaseDatabase database = FirebaseDatabase.getInstance();
                     Fragment fragment = newUnitFragment(in);
                     ft.replace(R.id.fragment_container, fragment);
                     ft.commit();
+                    log = "Unit";
                 }
 
                 else if (Molecule.isMolecule(in)){
@@ -147,6 +151,7 @@ FirebaseDatabase database = FirebaseDatabase.getInstance();
                     Fragment fragment = newMoleculeFragment(in);
                     ft.replace(R.id.fragment_container, fragment);
                     ft.commit();
+                    log = "Molecule";
                 }
 
                 else if(MathExpression.isMathExpression(in)){
@@ -156,6 +161,7 @@ FirebaseDatabase database = FirebaseDatabase.getInstance();
                     try{input.append(df.format(Double.parseDouble(m.getResult())));}
                     catch(Exception e){}
 //                    imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+                    log = "Math";
                 }
 
                 else{
@@ -165,9 +171,13 @@ FirebaseDatabase database = FirebaseDatabase.getInstance();
                     Fragment fragment = newBlankFragment(false);
                     ft.replace(R.id.fragment_container, fragment);
                     ft.commit();
+                    log = "Could not Process";
                 }
 
                 progress.dismiss();
+
+                event.putString(FirebaseAnalytics.Param.CONTENT_TYPE, log);
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, event);
 
             }
         });
