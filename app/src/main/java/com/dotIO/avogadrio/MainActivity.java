@@ -24,7 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.mopub.mobileads.MoPubView;
 import com.mopub.mobileads.MoPubView.BannerAdListener;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //    FIREBASE
-FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("Searches");
 
 
@@ -174,11 +176,18 @@ FirebaseDatabase database = FirebaseDatabase.getInstance();
                     log = "Could not Process";
                 }
 
+                if (in.equals("")){
+                    log = "Blank";
+                }
+
                 progress.dismiss();
 
                 event.putString(FirebaseAnalytics.Param.CONTENT_TYPE, log);
                 mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, event);
-
+                String time = DateFormat.getDateTimeInstance().format(new Date());
+                String key = myRef.push().getKey();
+                SearchDataPoint searchDataPoint = new SearchDataPoint(log, in, time);
+                myRef.child(key).setValue(searchDataPoint);
             }
         });
     }

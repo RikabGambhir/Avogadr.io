@@ -82,6 +82,15 @@ public class Molecule {
         return result;
     }
 
+//    private String preProcesses(String formula){
+//        String pattern = "([A-Z][a-z]*)(\\d*)";
+//        Pattern pat = Pattern.compile(pattern);
+//        Matcher r = pat.matcher(newFormula);
+//        while (r.find()) {
+//
+//        }
+//    }
+
     private Map<Element, Integer> parse(String formula) {
         String newFormula = formula;
         Map<Element, Integer> elementList = new LinkedHashMap<>();

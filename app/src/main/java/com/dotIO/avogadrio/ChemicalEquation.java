@@ -35,16 +35,17 @@ public class ChemicalEquation {
         LHSatoms = totalAtoms(LHS);
         RHSatoms = totalAtoms(RHS);
         //while(!isBalanced())
-        if (!isBalanceable()) {throw new TimeoutException();}
-
-        if (!isBalanced()) {
-        try {
-            balance();
-        } catch (TimeoutException e1) {
-            throw new TimeoutException();
-        } catch (Exception e2) {
-            balance2();                     //In case balance() method does not work
-        }
+        if (isBalanceable() == false) {throw new TimeoutException();}
+        else{
+            if (!isBalanced()) {
+                try {
+                    balance();
+                } catch (TimeoutException e1) {
+                    throw new TimeoutException();
+                } catch (Exception e2) {
+                    balance2();                     //In case balance() method does not work
+                }
+            }
         }
     }
 
@@ -115,11 +116,16 @@ public class ChemicalEquation {
     }
 
     public boolean isBalanceable(){
-        for (Map.Entry<Element, Integer> atom : LHSatoms.entrySet()) {
-            Element e = atom.getKey();
-            int u = atom.getValue();
-            Element re = e;
-            if (RHSatoms.get(e) == null){
+        for (Map.Entry<Element, Integer> lhs : LHSatoms.entrySet()) {
+            Element e = lhs.getKey();
+            boolean exists = false;
+            for (Map.Entry<Element, Integer> rhs : RHSatoms.entrySet()) {
+                Element re = rhs.getKey();
+                if (re.isEqual(e) && re != null){
+                    exists = true;
+                }
+            }
+            if (exists == false){
                 return false;
             }
         }
@@ -137,6 +143,7 @@ public class ChemicalEquation {
                     re = tot.getKey();
                 }
             }
+
             if (u != RHSatoms.get(re))
                 return false;
         }
