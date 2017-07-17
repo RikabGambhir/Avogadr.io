@@ -15,6 +15,8 @@ import android.app.Fragment;
 import android.view.View;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.widget.Toast;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -57,17 +59,10 @@ public class MainActivity extends AppCompatActivity {
         appRater.show();
 
 //        GOOGLE ADMOBS
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-8633600346333564/6203038135");
+        MobileAds.initialize(getApplicationContext(), getString(R.string.banner_ad_unit_id));
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-//
-////        MoPub
-//        moPubView = (MoPubView)findViewById(R.id.adView);
-//        moPubView.setAdUnitId("82f209baaf14496e8d65c99daba019f3");
-//        moPubView.setAutorefreshEnabled(true);
-//
-//        moPubView.loadAd();
 
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -154,6 +149,14 @@ public class MainActivity extends AppCompatActivity {
                     ft.replace(R.id.fragment_container, fragment);
                     ft.commit();
                     log = "Molecule";
+                }
+
+                else if (Molecule.isMolecule(in.toUpperCase())){
+                    Toast.makeText(MainActivity.this, "Please ensure your molecule is properly capitalized!", Toast.LENGTH_LONG).show();
+                }
+
+                else if (HalfReaction.isHalfReaction(in)){
+                    Toast.makeText(MainActivity.this, "Please enter a full chemical reaction!", Toast.LENGTH_LONG).show();
                 }
 
                 else if(MathExpression.isMathExpression(in)){

@@ -76,7 +76,8 @@ public class Molecule {
         boolean result = false;
         try{
             Molecule m = new Molecule(s);
-            if(m.getElements().size() != 0)result = true;
+            if(m.getElements().size() != 0
+                    && s.indexOf(' ') == -1)result = true;
         }
         catch(Exception e){}
         return result;
